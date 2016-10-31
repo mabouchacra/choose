@@ -14,3 +14,4 @@ target/
 rebuild.sh
 nb-configuration.xml
 **/dependency-reduced-pom.xml
+data/

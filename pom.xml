@@ -54,11 +54,21 @@
       <version>7.0</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- mongodb driver dependency -->
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+
     <!-- WildFly Swarm Fractions -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>microprofile</artifactId>
-    </dependency><dependency>
+    </dependency>
+
+    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>monitor</artifactId>
     </dependency>
