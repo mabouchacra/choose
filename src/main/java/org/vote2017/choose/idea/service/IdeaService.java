@@ -1,8 +1,8 @@
 package org.vote2017.choose.idea.service;
 
-import com.mongodb.Function;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoDatabase;
+import org.jongo.Jongo;
+import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 import org.vote2017.choose.idea.entity.Idea;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,22 +16,30 @@ import java.util.List;
 @ApplicationScoped
 public class IdeaService {
 
-    private final MongoDatabase mongoDatabase;
-
     @Inject
-    public IdeaService(MongoDatabase mongoDatabase){
-        this.mongoDatabase = mongoDatabase;
-    }
+    private Jongo jongo;
 
     public List<Idea> findAll(){
-        FindIterable iterable = mongoDatabase.getCollection("ideas").find();
 
-        //TODO to finish
-        iterable.map(new Function() {
-            @Override
-            public Object apply(Object o) {
-                return null;
-            }
-        });
+        Idea ideatemp = new Idea();
+        ideatemp.setDescription("One description");
+        ideatemp.setTitle("One title");
+
+        MongoCollection collection = jongo.getCollection("ideas");
+
+//        collection.save(ideatemp);
+
+        MongoCursor<Idea> cursorIdea = collection.find().as(Idea.class);
+        List<Idea> ideas = new ArrayList<>();
+        cursorIdea.forEach(idea -> ideas.add(idea));
+        return ideas;
+    }
+
+    public Idea findOne(){
+
+        Idea idea = new Idea();
+        idea.setDescription("One description");
+        idea.setTitle("One title");
+        return idea;
     }
 }

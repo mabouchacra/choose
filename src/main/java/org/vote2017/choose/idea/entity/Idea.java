@@ -1,5 +1,7 @@
 package org.vote2017.choose.idea.entity;
 
+import org.bson.types.ObjectId;
+
 import java.io.Serializable;
 
 /**
@@ -8,17 +10,17 @@ import java.io.Serializable;
  */
 public class Idea implements Serializable {
 
-    private Integer id;
+    private ObjectId id;
 
     private String title;
 
     private String description;
 
-    public Integer getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
